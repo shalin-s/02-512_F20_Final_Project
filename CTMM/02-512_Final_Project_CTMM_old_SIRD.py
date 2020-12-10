@@ -42,9 +42,9 @@ T_DEATH = 2
 NUM_EVENT_TYPES = 3
 
 # Hardcoded parameter values (Ls are rates/lambdas)
-N0 = 10000 # Initial Number of people
-I0 = 10 # Initial Number of infected people
-L_INFECTION = 2.5
+N0 = 100 # Initial Number of people
+I0 = 5 # Initial Number of infected people
+L_INFECTION = 10.0
 L_RECOVER = 0.95
 L_DEATH = 0.05
 
