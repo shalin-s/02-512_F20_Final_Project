@@ -42,9 +42,9 @@ T_DEATH = 2
 NUM_EVENT_TYPES = 3
 
 # Hardcoded parameter values (Ls are rates/lambdas)
-N0 = 100 # Initial Number of people
-I0 = 5 # Initial Number of infected people
-L_INFECTION = 10.0
+N0 = 10000 # Initial Number of people
+I0 = 10 # Initial Number of infected people
+L_INFECTION = 5.0
 L_RECOVER = 0.95
 L_DEATH = 0.05
 
@@ -122,12 +122,15 @@ log_print("Final State ([S, I, R, D, N]): {}".format(Q))
 for Q_idx in range(NUM_STATE_VARS):
 	plt.plot(times_list, QS[Q_idx, :], color=STATE_COLORS[Q_idx], label=STATE_NAMES[Q_idx] + " (Final: {})".format(Q[Q_idx]))
 plt.legend()
-plt.title("CTMM Simulation of SIRD Model ({} initial asymptomatic infections, among {} people)".format(I0, N0))
+plt.title("CTMM Simulation of SIRD Model ({} initial infections, among {} people)".format(I0, N0))
 plt.xlabel("Time")
 plt.ylabel("Number of People")
 fig = plt.gcf()
+figure_text = ""
+figure_text += "Death Rate: {}/{} = {:0.3f}%. ".format(N0 - Q[Q_N], N0, 100 * (N0 - Q[Q_N])/ N0)
+plt.figtext(0.5, 0.01, figure_text, wrap=True, horizontalalignment='center', fontsize=10)
 fig.set_size_inches(9, 9, forward=True)
-plt.savefig("CTMM_SIRD_old_1.png")
+plt.savefig("CTMM_SIRD_old_2.png")
 plt.close()
 
 log_print("Done")
